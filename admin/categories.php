@@ -20,26 +20,8 @@
 
                     <div class="col-xs-6">
 
-                        <?php
-                        if(isset($_POST['submit'])) {
-                            $cat_title = $_POST['cat_title'];
-                            if($cat_title == '' || empty($cat_title)) {
-                                echo "This field should not be empty";
-                             } else {
-                                $query = "INSERT INTO categories(cat_title) ";
-                                $query .= "VALUE ('{$cat_title}') ";
-
-                            $create_category_query = mysqli_query($connect, $query);
-                            if(!$create_category_query) {
-                                die('QUERY FAILED' . mysqli_error($connect));
-                            }                            
-                            
-                            }
-                        }
-                         ?>
-                        
-
-
+                        <?php insert_categories(); ?>
+           
                         <form action="" method="post">
                             <div class="form-group">
                                 <label for="cat-title">Add Category</label>
@@ -49,14 +31,17 @@
                                 <input class="btn btn-primary" type="submit" name="submit" value="Add Category">
                             </div>
                         </form>
+
+                    <?php //Edit category
+                        if(isset($_GET['edit'])) {
+                        $cat_id = $_GET['edit'];
+                        include "includes/update_categories.php";
+
+                        }
+                    ?>
+
                     </div>
                          <div class="col-xs-6">
-                <?php
-
-                        $query = "SELECT * FROM categories";
-                        $select_categories = mysqli_query($connect, $query);
-                ?>
-
                             <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
@@ -66,17 +51,10 @@
                                 </thead>
                                 <tbody>
 
-                <?php
-                    while ($row = mysqli_fetch_assoc($select_categories)) {
-                            $cat_id = $row['id'];
-                            $cat_title = $row['cat_title'];
-                            echo "<tr>";
-                            echo "<td>{$cat_id}</td>";
-                            echo "<td>{$cat_title}</td>";
-                            echo "<tr>";
+                <?php findcategory(); ?> 
 
-                            } 
-                ?>
+
+                <?php deleteCategory(); ?> 
                                 
                                 </tbody>
                             </table>
