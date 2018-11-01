@@ -27,18 +27,17 @@
                         switch ($source) {
                             case 'add_post';
                             include "includes/add_post.php";
-                                break;
+                            break;
 
-                                    case '100';
-                            echo "it's ok";
-                                break;
+                            case 'edit_post';
+                            include "includes/edit_post.php";
+                            break;
 
-                                    case '30';
-                            echo "it's ok";
-                                break;
+                            
                             
                             default:
-                                
+                                include "includes/view_all_posts.php";
+
                                 break;
                         }
 
