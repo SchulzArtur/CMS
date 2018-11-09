@@ -16,7 +16,13 @@
             <!-- Blog Entries Column -->
             <div class="col-md-8">
                 <?php
-                $query = "SELECT * FROM posts";
+                if(isset($_GET['category'])) {
+                    $post_category_id = $_GET['category'];
+                }
+
+
+
+                $query = "SELECT * FROM posts WHERE post_category_id = $post_category_id ";
 
                    $select_all_posts_query = mysqli_query($connect, $query);
 
@@ -27,11 +33,6 @@
                         $post_date = $row['post_date'];
                         $post_image = $row['post_image'];
                         $post_content = substr($row['post_content'],0,100);
-                        $post_status = $row['post_status'];
-
-                    if($post_status !== "published") {
-                         echo "<h1> NO POST SORRY </h1>";
-                    } else {
                     
 
                     ?>
@@ -59,7 +60,7 @@
 
 
 
-                <?php }   }?>
+                <?php } ?>
 
               
 
