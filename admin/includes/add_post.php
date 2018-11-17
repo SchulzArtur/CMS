@@ -21,6 +21,8 @@
 
       		confirmQuery($create_post_query);
 
+      		$the_post_id = mysqli_insert_id($connect);
+      		 echo "<p class='bg-success'>Post Created.<a href='../post.php?p_id={$the_post_id}'>View Post</a> or <a href='posts.php'> Edit More Posts</a></p> ";
         }
 ?>
 
@@ -59,9 +61,13 @@
 	</div>
 
 	<div class="form-group">
-		<label for="post_status">Post Status</label>
-		<input type="text" class="form-control" name="post_status">
+		<select name="post_status" id="">
+			<option value="draft">Post Status</option>
+			<option value="published">Publish</option>
+			<option value="draft">Draft</option>
+		</select>		
 	</div>
+
 	<div class="form-group">
 		<label for="post_image">Post Image</label>
 		<input type="file" class="form-control" name="image">
@@ -74,7 +80,7 @@
 	
 	<div class="form-group">
 		<label for="post_content">Post Content</label>
-		<textarea type="text" class="form-control" name="post_content" id="" cols="30" rows="10"> </textarea>
+		<textarea type="text" class="form-control" name="post_content" id="body" cols="30" rows="20"> </textarea>
 	</div>
 
 	<div class="form-group">
