@@ -26,7 +26,7 @@
             $user_email = $row['user_email'];
             $user_image = $row['user_image'];
             $user_role = $row['user_role'];
-            $user_randSalt = $row['user_randSalt'];
+            $user_randSalt = $row['randSalt'];
 
 
             echo "<tr>";

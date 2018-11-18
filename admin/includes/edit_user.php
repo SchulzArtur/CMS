@@ -16,7 +16,7 @@ $the_user_id = $_GET['edit_user'];
     $user_email = $row['user_email'];
     $user_image = $row['user_image'];
     $user_role = $row['user_role'];
-    $user_randSalt = $row['user_randSalt']; 
+    $user_randSalt = $row['randSalt']; 
 }
 
 }
@@ -36,13 +36,24 @@ $the_user_id = $_GET['edit_user'];
 
             // move_uploaded_file($post_image_temp, "../images/$post_image");
 
+            $query = "SELECT randSalt FROM users";
+            $select_randSalt_query = mysqli_query($connect, $query);
+
+            if(!$select_randSalt_query) {
+                die('QUERY FAILED' . mysqli_error($connect));
+            }         
+
+            $row = mysqli_fetch_array($select_randSalt_query);
+            $salt = $row['randSalt'];
+            $hashed_password = crypt($user_password, $salt);
+
             $query = "UPDATE users SET ";
             $query .= "user_firstname = '{$user_firstname}', ";
             $query .= "user_lastname = '{$user_lastname}', ";
             $query .= "user_role  = '{$user_role}', ";
             $query .= "user_name = '{$username}', ";
             $query .= "user_email = '{$user_email}', ";
-            $query .= "user_password   = '{$user_password }'  ";
+            $query .= "user_password   = '{$hashed_password }'  ";
             $query .= "WHERE user_id = {$the_user_id} ";    
             $edit_user_query = mysqli_query($connect, $query);
             confirmQuery($edit_user_query);
@@ -67,7 +78,7 @@ $the_user_id = $_GET['edit_user'];
 
         <select name="user_role" id="">
 
-<option value="subscriber"><?php echo $user_role; ?></option>
+<option value="<?php echo $user_role; ?>"><?php echo $user_role; ?></option>
             <?php
                 if($user_role == 'admin') {
                    echo  "<option value='subscriber'>subscriber</option>";
