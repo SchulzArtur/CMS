@@ -1,22 +1,15 @@
     
 $(document).ready(function() {
-
+// editor
     ClassicEditor
         .create( document.querySelector( '#body' ) )
         .catch( error => {
             console.error( error );
         } );
 
-    });
-
-
-
-
-
-
-
-$(document).ready(function() {
-	$('#selectAllBoxes').click(function(event) {
+  
+// Select all boxes function
+$('#selectAllBoxes').click(function(event) {
 		if(this.checked) {
 			$('.checkBoxes').each(function() {
 				this.checked = true;
@@ -27,5 +20,9 @@ $(document).ready(function() {
 });
 }
 });
+
+
+
+
 });
 
