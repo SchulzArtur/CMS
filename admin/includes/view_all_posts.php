@@ -103,6 +103,7 @@
             <th>View Post</th>
             <th>Edit</th>
             <th>Delete</th>
+            <th>Views</th>
         </tr>
     </thead>
     <tbody>
@@ -121,6 +122,7 @@
             $post_tags = $row['post_tags'];
             $post_comment_count = $row['post_comment_count'];
             $post_date = $row['post_date'];
+            $post_views_count = $row['post_views_count'];
 
 
             echo "<tr>";
@@ -156,6 +158,7 @@
             echo "<td><a href='../post.php?p_id={$post_id}'>View Post</a></td>";
             echo "<td><a href='posts.php?source=edit_post&p_id={$post_id}'>Edit</a></td>";
             echo "<td><a onClick=\"javascript: return confirm('Are you sure you want to delete it?'); \" href='posts.php?delete={$post_id}'>Delete</a></td>";
+            echo "<td>{$post_views_count}</td>";
             echo "</tr>";
 
 
