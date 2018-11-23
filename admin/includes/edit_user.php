@@ -1,3 +1,5 @@
+<?php ob_start(); ?>
+
 <?php
 
 if(isset($_GET['edit_user'])) {

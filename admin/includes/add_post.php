@@ -1,3 +1,5 @@
+<?php ob_start(); ?>
+
 <?php
 	if(isset($_POST['create_post'])) {
             $post_author = $_POST['author'];

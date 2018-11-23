@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
   
   <footer>
             <div class="row">

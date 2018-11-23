@@ -1,3 +1,7 @@
+<?php ob_start(); ?>
+
+<?php session_start(); ?>
+
   <table class="table table-bordered table-hover">
     <thead>
         <tr>

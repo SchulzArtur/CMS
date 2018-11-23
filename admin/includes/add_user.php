@@ -1,3 +1,5 @@
+<?php ob_start(); ?>
+
 <?php
 	if(isset($_POST['create_user'])) {
             $user_firstname = $_POST['user_firstname'];

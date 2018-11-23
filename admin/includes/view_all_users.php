@@ -1,3 +1,5 @@
+<?php ob_start(); ?>
+
   <table class="table table-bordered table-hover">
     <thead>
         <tr>
