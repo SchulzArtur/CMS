@@ -28,13 +28,9 @@
 			$db_user_role = $row['user_role'];
         	$salt = $row['randSalt'];
 		}
-			$password = crypt($password, $salt);
+			// $password = crypt($password, $salt);
 
-
-
-
-
-		if($username === $db_user_name && $password === $db_user_password) {
+		if(password_verify($password, $db_user_password)) {
 
 			$_SESSION['username'] = $db_user_name;
 			$_SESSION['fistname'] = $db_user_firstname;
