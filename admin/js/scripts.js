@@ -1,11 +1,14 @@
     
 $(document).ready(function() {
 // editor
-    ClassicEditor
+        ClassicEditor
         .create( document.querySelector( '#body' ) )
         .catch( error => {
             console.error( error );
+
         } );
+
+        
 
   
 // Select all boxes function
